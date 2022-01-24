@@ -1,5 +1,6 @@
 ﻿using DAW2.Models.Base;
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace DAW2.Models
@@ -17,5 +18,8 @@ namespace DAW2.Models
 
         public Subscription Subscription { get; set; }
         public Guid SubscriptionId { get; set; }
+        public Theme Theme { get; set; }
+
+        public ICollection<UserMovieRelation> UserMovieRelations { get; set; }
     }
 }

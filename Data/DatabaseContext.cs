@@ -14,6 +14,24 @@ namespace DAW2.Data
     {
         public DbSet<DataBaseModel> DataBaseModels { get; set; }
 
+        //Movie
+        public DbSet<Movie> Movies { get; set; }
+
+        //Subscription
+        public DbSet<Subscription> Subscriptions { get; set; }
+
+        //Theme
+        public DbSet<Theme> Themes { get; set; }
+
+        //User
+        public DbSet<User> Users { get; set; }
+
+        //User - Movie Relation
+        public DbSet<UserMovieRelation> UserMovieRelations { get; set; }
+
+
+        /*
+
         // O - M
 
         public DbSet<Model1> Models1 { get; set; }
@@ -32,6 +50,8 @@ namespace DAW2.Data
         public DbSet<Model4> Models4 { get; set; }
         public DbSet<ModelsRelation> ModelsRelations { get; set; }
 
+        */
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options): base(options)
         {
 
@@ -39,17 +59,21 @@ namespace DAW2.Data
 
         protected override void OnModelCreating (ModelBuilder modelBuilder)
         {
+            /*
             // O - M
             modelBuilder.Entity<Model1>()
                 .HasMany(m1 => m1.Models2)
                 .WithOne(m2 => m2.Model1);
+            */
 
-            // O - O
+            /*            // O - O
             modelBuilder.Entity<Model5>()
                 .HasOne(m5 => m5.Model6)
                 .WithOne(m6 => m6.Model5)
                 .HasForeignKey<Model6>(m6 => m6.Model5Id);
+            */
 
+            /*
             // M - M
 
             modelBuilder.Entity<ModelsRelation>()
@@ -64,6 +88,39 @@ namespace DAW2.Data
                 .HasOne<Model4>(mr => mr.Model4)
                 .WithMany(m4 => m4.ModelsRelations)
                 .HasForeignKey(mr => mr.Model4Id);
+            */
+
+
+            // User - Subscription (One to Many)
+
+            modelBuilder.Entity<Subscription>()
+                .HasMany(s1 => s1.Users)
+                .WithOne(u1 => u1.Subscription);
+
+            // User - Theme (One to One)
+
+            modelBuilder.Entity<User>()
+                .HasOne(u1 => u1.Theme)
+                .WithOne(t1 => t1.User)
+                .HasForeignKey<Theme>(t1 => t1.UserId);
+
+
+            // User - Movie (Many to Many)
+
+            modelBuilder.Entity<UserMovieRelation>()
+                .HasKey(mr => new { mr.UserId, mr.MovieId });
+
+            modelBuilder.Entity<UserMovieRelation>()
+                .HasOne<User>(mr => mr.User)
+                .WithMany(u1 => u1.UserMovieRelations)
+                .HasForeignKey(mr => mr.UserId);
+
+            modelBuilder.Entity<UserMovieRelation>()
+                .HasOne<Movie>(mr => mr.Movie)
+                .WithMany(m1 => m1.UserMovieRelations)
+                .HasForeignKey(mr => mr.MovieId);
+
+
 
             base.OnModelCreating(modelBuilder);
         }
