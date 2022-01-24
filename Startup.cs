@@ -1,4 +1,6 @@
 using DAW2.Data;
+using DAW2.Repository.DatabaseRepository;
+using DAW2.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +38,8 @@ namespace DAW2
             });
 
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IService, Service>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
