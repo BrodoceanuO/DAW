@@ -26,5 +26,12 @@ namespace DAW2.Repository.DatabaseRepository
             return _table.Include(x => x.Subscription).ToList;
         }
         */
+
+        public void GroupBy()
+        {
+            var groupUsers = _table.GroupBy(x => x.LastName);
+        }
+
+
     }
 }

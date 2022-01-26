@@ -1,7 +1,4 @@
 ﻿using DAW2.Models;
-using DAW2.Models.Many_to_Many;
-using DAW2.Models.One_to_Many;
-using DAW2.Models.One_to_One;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

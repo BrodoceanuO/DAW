@@ -6,7 +6,8 @@ namespace DAW2.Repository.DatabaseRepository
 {
     public interface IUserRepository: IGenericRepository<User>
     {
-        User GetByLastName(string LastName;
+        User GetByLastName(string LastName);
+
 
         //User GetByUserNameIncludingSubscription(string UserName);
 

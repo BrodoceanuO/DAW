@@ -61,3 +61,4 @@ C:\Users\Octavian\source\repos\DAW2\obj\Debug\net6.0\DAW2.dll
 C:\Users\Octavian\source\repos\DAW2\obj\Debug\net6.0\ref\DAW2.dll
 C:\Users\Octavian\source\repos\DAW2\obj\Debug\net6.0\DAW2.pdb
 C:\Users\Octavian\source\repos\DAW2\obj\Debug\net6.0\DAW2.genruntimeconfig.cache
+C:\Users\Octavian\source\repos\DAW2\bin\Debug\net6.0\BCrypt.Net-Core.dll
