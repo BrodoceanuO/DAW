@@ -2,6 +2,7 @@
 using DAW2.Models.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DAW2.Services
 {
@@ -26,6 +27,13 @@ namespace DAW2.Services
 
         //GetById
         //User GetById(Guid id);
-        
+
+        List<User> GetAllWithInclude();
+
+        List<IGrouping<string, User>> GroupBy();
+
+        User GetUserById(Guid Id);
+
+
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using BCrypt;
 using DAW2.Utilities.JWTUtils;
 using System.Collections.Generic;
+using System;
 
 namespace DAW2.Services
 {
@@ -68,6 +69,23 @@ namespace DAW2.Services
         {
             _userRepository.Create(user);
             _userRepository.Save();
+        }
+
+        public List<User> GetAllWithInclude()
+        {
+            return _userRepository.GetAllWithInclude();
+        }
+
+
+        public List<IGrouping<string, User>> GroupBy()
+        {
+            var groupUsers = _userRepository.GroupBy();
+            return groupUsers;
+        }
+
+        public User GetUserById(Guid Id)
+        {
+            return _userRepository.GetUserById(Id);
         }
     }
 }
